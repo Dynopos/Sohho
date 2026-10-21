@@ -287,6 +287,15 @@ img{max-width:100%;display:block}
 .footer p,.footer a{color:#a6b4c1;line-height:1.9;font-size:13px}
 .footer a:hover{color:var(--coral)}
 .copyright{border-top:1px solid #ffffff1a;margin-top:35px;padding-top:20px;color:#71808e;font-size:12px}
+.sound-btn{position:fixed;z-index:40;left:22px;bottom:22px;width:48px;height:48px;border-radius:50%;border:1px solid #ffffff2e;background:#0d1828e0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 10px 26px #0006;display:grid;place-items:center;color:#fff;opacity:0;transform:scale(.6);transition:opacity .5s,transform .5s var(--ease),background .3s}
+.ready .sound-btn{opacity:1;transform:none}
+.sound-btn:hover{transform:scale(1.08)}
+.sound-btn svg{width:20px;height:20px}
+.sound-btn .i-on,.sound-btn.on .i-off{display:none}
+.sound-btn.on .i-on{display:block}
+.sound-btn.on{background:var(--red);border-color:transparent}
+.sound-btn.on:after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--red);animation:ring 1.8s ease-out infinite}
+@keyframes ring{from{transform:scale(1);opacity:.9}to{transform:scale(1.8);opacity:0}}
 .wa-float{position:fixed;z-index:40;bottom:22px;right:22px;background:var(--wa);color:#04210f;border-radius:50px;padding:14px 19px;box-shadow:0 12px 30px #0006;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;transform:translateY(120px);transition:transform .6s var(--ease)}
 .wa-float.show{transform:none}
 .wa-float svg{width:18px;height:18px}
@@ -346,6 +355,7 @@ img{max-width:100%;display:block}
   .faq-item p{padding-right:0}
   .footgrid{grid-template-columns:1fr}
   .wa-float{bottom:14px;right:14px}
+  .sound-btn{left:14px;bottom:14px}
   .wa-float .lbl{display:none}
   .footer{padding-bottom:96px}
   .section{padding:64px 0}
@@ -639,6 +649,10 @@ img{max-width:100%;display:block}
   </div>
 </footer>
 
+<button class="sound-btn" id="soundBtn" aria-label="Mainkan lagu SOHHO" aria-pressed="false">
+  <svg class="i-off" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.6 3 2.7-2.7-1.4-1.4-2.7 2.7-2.7-2.7-1.4 1.4 2.7 2.7-2.7 2.7 1.4 1.4 2.7-2.7 2.7 2.7 1.4-1.4z"/></svg>
+  <svg class="i-on" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
+</button>
 <a class="wa-float" id="waFloat" href="https://wa.me/60178941093" data-wa target="_blank" rel="noopener" aria-label="WhatsApp SOHHO">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>
   <span class="lbl">WhatsApp</span>
@@ -729,6 +743,34 @@ img{max-width:100%;display:block}
   }));
   lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
   addEventListener('keydown', e => { if (e.key === 'Escape') { if (lb.classList.contains('open')) closeLb(); else setMenu(false); } });
+
+  /* ---------- Jingle: the SOHHO chorus plays on the first tap, small button to switch it on/off ---------- */
+  // Browsers block sound until the visitor interacts, so the chorus starts on the
+  // first tap / click / key press anywhere on the page (scrolling alone doesn't count).
+  const jingle = new Audio('assets/chorus.mp3'); jingle.preload = 'auto';
+  const soundBtn = $('#soundBtn');
+  const setOn = on => {
+    soundBtn.classList.toggle('on', on); soundBtn.setAttribute('aria-pressed', on);
+    soundBtn.setAttribute('aria-label', on ? 'Hentikan lagu SOHHO' : 'Mainkan lagu SOHHO');
+  };
+  const playJingle = () => jingle.play().catch(() => {});
+  jingle.addEventListener('play', () => { setOn(true); endAutoplay(); });
+  jingle.addEventListener('pause', () => setOn(false));
+  jingle.addEventListener('ended', () => { setOn(false); jingle.currentTime = 0; });
+  soundBtn.addEventListener('click', () => { endAutoplay(); jingle.paused ? playJingle() : jingle.pause(); });
+
+  const AUTOPLAY_EVENTS = ['pointerup', 'click', 'keydown'];
+  let autoplayDone = false, lastTry = 0;
+  function endAutoplay() { autoplayDone = true; AUTOPLAY_EVENTS.forEach(t => removeEventListener(t, firstTouch, true)); }
+  function firstTouch(e) {
+    if (autoplayDone) return;
+    if (e.type === 'keydown' && ['Tab', 'Shift', 'Control', 'Alt', 'Meta', 'Escape'].includes(e.key)) return;
+    if (e.target.closest && e.target.closest('#soundBtn')) return endAutoplay();
+    if (Date.now() - lastTry < 1000) return; // one tap fires pointerup + click
+    lastTry = Date.now();
+    playJingle(); // if the browser refuses, the next tap tries again
+  }
+  AUTOPLAY_EVENTS.forEach(t => addEventListener(t, firstTouch, true));
 })();
 </script>
 </body>

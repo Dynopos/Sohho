@@ -18,3 +18,11 @@ Reka bentuk mengikut gaya laman Naami Stable (loader, hero penuh skrin, marquee,
 
       convert asal.jpg -resize '1600x1600>' -strip -interlace Plane -quality 80 assets/nama.jpg
       convert asal.jpg -resize '800x800>'  -strip -interlace Plane -quality 76 assets/nama-sm.jpg
+
+## Lagu (chorus)
+`assets/chorus.mp3` ialah bahagian chorus lagu "Sohho Skylift" (saat 23.6–32.1 lagu asal, ~8.6 saat). Ia mula berbunyi pada
+sentuhan/klik pertama di mana-mana bahagian laman — pelayar tidak membenarkan audio berbunyi sebelum pelawat berinteraksi,
+dan skrol sahaja tidak memulakannya. Butang bulat kecil di kiri bawah memainkan/menghentikan lagu.
+Untuk tukar, ganti fail itu dengan nama yang sama, contohnya:
+
+    ffmpeg -ss 23.6 -to 32.15 -i lagu.m4a -map 0:a:0 -af "afade=t=in:st=0:d=0.08,afade=t=out:st=8.1:d=0.45" -c:a libmp3lame -b:a 128k assets/chorus.mp3
