@@ -4,20 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#070d16">
-<meta name="description" content="Sewa skylift SOHHO di Pantai Timur. Pengalaman lebih 20 tahun, pilihan ketinggian 15 hingga 44 meter dan harga mampu milik. Hubungi 017-894 1093 melalui WhatsApp.">
+<meta name="description" content="SOHHO Advertising & Engineering — sewa skylift di Pantai Timur, kontraktor berdaftar CIDB G3. Pengalaman lebih 20 tahun, pilihan ketinggian 15 hingga 44 meter dan harga mampu milik. Hubungi 017-894 1093 melalui WhatsApp.">
 <link rel="canonical" href="https://sohho.my/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sohho.my/">
 <meta property="og:title" content="SOHHO | Sewa Skylift Pantai Timur">
 <meta property="og:description" content="Skylift 15m, 18m, 23m dan 44m untuk kerja pemasangan, penyelenggaraan dan tugasan di tempat tinggi. Pengalaman lebih 20 tahun.">
 <meta property="og:image" content="https://sohho.my/assets/skylift-lori-sohho.jpg">
-<title>SOHHO | Sewa Skylift Pantai Timur</title>
-<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<title>SOHHO Advertising &amp; Engineering | Sewa Skylift Pantai Timur</title>
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LocalBusiness","name":"SOHHO","description":"Perkhidmatan sewa skylift 15 hingga 44 meter di Pantai Timur.","url":"https://sohho.my/","telephone":"+60178941093","image":"https://sohho.my/assets/skylift-lori-sohho.jpg","areaServed":"Pantai Timur, Malaysia","priceRange":"RM550 – RM2,500"}
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"SOHHO Advertising & Engineering","legalName":"Jelira Marketing","email":"jeliramarketing@gmail.com","logo":"https://sohho.my/assets/logo.png","address":{"@type":"PostalAddress","streetAddress":"Lot 1985 A,B & C, Jalan Ketereh-Kok Lanas, Kg. Pangkal Kuang","addressLocality":"Ketereh","postalCode":"16450","addressRegion":"Kelantan","addressCountry":"MY"},"description":"Perkhidmatan sewa skylift 15 hingga 44 meter di Pantai Timur.","url":"https://sohho.my/","telephone":"+60178941093","image":"https://sohho.my/assets/skylift-lori-sohho.jpg","areaServed":"Pantai Timur, Malaysia","priceRange":"RM550 – RM2,500"}
 </script>
 <style>
 :root{
@@ -38,8 +39,8 @@ img{max-width:100%;display:block}
 /* ---------- Loader ---------- */
 .loader{position:fixed;inset:0;z-index:100;background:var(--ink);display:grid;place-items:center;transition:clip-path 1s var(--ease) .1s;clip-path:inset(0 0 0 0)}
 .loader.done{clip-path:inset(0 0 100% 0)}
-.loader-mark{width:96px;height:96px;border-radius:50%;overflow:hidden;animation:pulse 1.4s ease-in-out infinite}
-.loader-mark img{width:100%;height:100%}
+.loader-mark{width:180px;animation:pulse 1.4s ease-in-out infinite}
+.loader-mark img{width:100%;height:auto}
 .loader-bar{width:140px;height:2px;background:#ffffff1a;margin:22px auto 0;overflow:hidden;border-radius:2px}
 .loader-bar i{display:block;height:100%;width:40%;background:var(--coral);animation:slide 1s ease-in-out infinite}
 @keyframes pulse{50%{transform:scale(.94)}}
@@ -53,11 +54,9 @@ img{max-width:100%;display:block}
 .nav{height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px;transition:height .4s}
 .scrolled .nav{height:70px}
 .brand{display:flex;align-items:center;gap:12px;flex:none}
-.brand-mark{width:46px;height:46px;border-radius:50%;overflow:hidden;flex:none;box-shadow:0 6px 18px #e3343b55;transition:transform .6s var(--ease)}
-.brand:hover .brand-mark{transform:rotate(-12deg) scale(1.05)}
-.brand-mark img{width:100%;height:100%}
-.brand strong{font-family:'Playfair Display',serif;font-size:21px;letter-spacing:.14em;display:block;white-space:nowrap}
-.brand small{display:block;color:#b6c2d0;font-size:10px;letter-spacing:.2em;margin-top:3px;white-space:nowrap}
+.brand-logo{height:78px;width:auto;transition:height .4s,transform .6s var(--ease)}
+.scrolled .brand-logo{height:60px}
+.brand:hover .brand-logo{transform:rotate(-4deg) scale(1.04)}
 .navlinks{display:flex;align-items:center;gap:26px;font-size:13px;white-space:nowrap}
 .navlinks a{position:relative;padding:6px 0}
 .navlinks a:after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--coral);transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
@@ -213,6 +212,25 @@ img{max-width:100%;display:block}
 .facts dt{color:#c22a31;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 .facts dd{margin:0;color:#3f4f5f;font-size:14px;line-height:1.6}
 
+/* registration */
+.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.reg-facts{margin:26px 0 0;display:grid;grid-template-columns:1fr 1fr;column-gap:26px}
+.reg-facts div{padding:12px 0;border-top:1px solid #15223314}
+.reg-facts div.wide{grid-column:1/-1}
+.reg-facts dt{color:#c22a31;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.reg-facts dd{margin:3px 0 0;color:#152233;font-size:14px;line-height:1.6}
+.reg-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.reg-badges span{background:var(--navy);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;padding:8px 13px;border-radius:30px}
+.reg-badges span:first-child{background:var(--red)}
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cert{border:0;padding:0;background:none;text-align:left;cursor:zoom-in}
+.cert-paper{display:block;aspect-ratio:910/1110;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 14px 34px #0d18281f;transition:transform .45s var(--ease),box-shadow .45s}
+.cert:hover .cert-paper{transform:translateY(-6px) rotate(-1deg);box-shadow:0 24px 50px #0d182833}
+.cert-paper img{width:100%;height:100%;object-fit:cover;object-position:top}
+.cert b{display:block;margin-top:12px;font-size:13.5px;color:#152233}
+.cert small{display:block;color:#66788a;font-size:12px;margin-top:2px}
+.reg-note{margin-top:18px;font-size:12px;color:#7a8794}
+
 /* steps */
 .how{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
 .steps{display:grid;grid-template-columns:1fr 1fr;gap:14px;counter-reset:step}
@@ -252,6 +270,7 @@ img{max-width:100%;display:block}
 .cta{position:relative;overflow:hidden;background:linear-gradient(180deg,#0c2440,#0a1a2d);text-align:center;padding:120px 25px 170px}
 .cta p{color:#b8c8d8;line-height:1.8}
 .cta p b{color:#fff}
+.cta p a{color:#fff;border-bottom:1px dashed #ffffff80}
 .waves{position:absolute;left:0;bottom:0;width:100%;height:140px}
 .waves use{animation:wave 9s cubic-bezier(.55,.5,.45,.5) infinite}
 .waves use:nth-child(1){animation-delay:-2s;animation-duration:7s}
@@ -262,7 +281,8 @@ img{max-width:100%;display:block}
 
 /* footer */
 .footer{background:#04080e;padding:60px 0 30px}
-.footgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:35px}
+.footgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:35px}
+.foot-logo{width:170px;height:auto;margin-bottom:14px}
 .footer h4{margin-top:0}
 .footer p,.footer a{color:#a6b4c1;line-height:1.9;font-size:13px}
 .footer a:hover{color:var(--coral)}
@@ -285,13 +305,13 @@ img{max-width:100%;display:block}
 }
 @media(max-width:900px){
   .nav{height:72px}.scrolled .nav{height:64px}
-  .brand strong{font-size:18px}
+  .brand-logo{height:62px}.scrolled .brand-logo{height:54px}
   .navlinks{position:fixed;top:0;left:0;right:0;height:100vh;height:100dvh;background:#070d16f7;flex-direction:column;justify-content:safe center;gap:clamp(6px,2.2vh,28px);font-size:clamp(20px,3vh,28px);padding:72px 0 24px;overflow-y:auto;font-family:'Playfair Display',serif;clip-path:circle(0 at calc(100% - 44px) 36px);transition:clip-path .7s var(--ease);z-index:-1}
   .navlinks.open{clip-path:circle(150% at calc(100% - 44px) 36px)}
   .mobile-menu{display:block}
   .nav>.pill{display:none}
   .hero-bottom{gap:22px;flex-wrap:wrap;margin-top:50px}
-  .intro-grid,.experience,.project,.how,.faq-grid{grid-template-columns:1fr;gap:44px}
+  .intro-grid,.experience,.project,.how,.faq-grid,.reg-grid{grid-template-columns:1fr;gap:44px}
   .intro-media .reveal-img{height:440px}
   .badge{right:12px;bottom:-30px;width:112px;height:112px}
   .exp-media{height:420px}
@@ -318,6 +338,9 @@ img{max-width:100%;display:block}
   .steps{grid-template-columns:1fr}
   .k-services{grid-template-columns:1fr}
   .facts{grid-template-columns:1fr}
+  .reg-facts{grid-template-columns:1fr}
+  .certs{gap:10px}
+  .cert b{font-size:12px}.cert small{font-size:11px}
   .gallery{grid-template-rows:240px 170px 170px;gap:8px}
   .faq-item summary{font-size:17px}
   .faq-item p{padding-right:0}
@@ -336,18 +359,18 @@ img{max-width:100%;display:block}
 </style>
 </head>
 <body>
-<div class="loader" id="loader" aria-hidden="true"><div><div class="loader-mark"><img src="assets/logo.svg" alt=""></div><div class="loader-bar"><i></i></div></div></div>
+<div class="loader" id="loader" aria-hidden="true"><div><div class="loader-mark"><img src="assets/logo.png" alt=""></div><div class="loader-bar"><i></i></div></div></div>
 <div class="progress" id="progress"></div>
 <div class="glow" id="glow" aria-hidden="true"></div>
 
 <header class="topbar" id="topbar">
   <div class="wrap nav">
-    <a href="#utama" class="brand"><div class="brand-mark"><img src="assets/logo.svg" alt="Logo SOHHO"></div><div><strong>SOHHO</strong><small>SKYLIFT · PANTAI TIMUR</small></div></a>
+    <a href="#utama" class="brand"><img class="brand-logo" src="assets/logo.png" alt="SOHHO Advertising &amp; Engineering" width="640" height="498"></a>
     <nav class="navlinks" id="navlinks">
       <a href="#tentang">Tentang Kami</a>
       <a href="#harga">Kadar Sewaan</a>
       <a href="#servis">Perkhidmatan</a>
-      <a href="#kelebihan">Kenapa SOHHO</a>
+      <a href="#pendaftaran">Pendaftaran</a>
       <a href="#galeri">Galeri</a>
       <a href="#soalan">Soalan Lazim</a>
       <a href="#hubungi">Hubungi</a>
@@ -364,14 +387,14 @@ img{max-width:100%;display:block}
     <img class="hero-bg" src="assets/skylift-menara.jpg" alt="" fetchpriority="high">
   </picture>
   <div class="wrap hero-content">
-    <div class="eyebrow fade-in">SOHHO · SEWA SKYLIFT PANTAI TIMUR</div>
+    <div class="eyebrow fade-in">SOHHO ADVERTISING &amp; ENGINEERING</div>
     <h1><span class="line"><span>Kerja tinggi,</span></span><span class="line"><span><em>jadi lebih mudah.</em></span></span></h1>
     <p class="lead fade-in d1">Skylift SOHHO untuk kerja pemasangan, penyelenggaraan dan tugasan di tempat tinggi. Pilih ketinggian yang sesuai, kami bantu uruskan selebihnya.</p>
     <div class="actions fade-in d2">
       <a class="btn btn-red" href="#harga">LIHAT KADAR SEWAAN <span class="arrow">↗</span></a>
       <a class="btn btn-ghost" href="https://wa.me/60178941093" data-wa target="_blank" rel="noopener">SEMAK KETERSEDIAAN</a>
     </div>
-    <div class="hero-bottom fade-in d3"><span><b>15–44 m</b>Pilihan ketinggian</span><span><b>20+ tahun</b>Pengalaman</span><span><b>Pantai Timur</b>Kawasan liputan</span></div>
+    <div class="hero-bottom fade-in d3"><span><b>15–44 m</b>Pilihan ketinggian</span><span><b>20+ tahun</b>Pengalaman</span><span><b>CIDB G3</b>Kontraktor berdaftar</span></div>
   </div>
   <a href="#tentang" class="scroll-cue" aria-label="Skrol ke bawah"></a>
 </section>
@@ -393,7 +416,7 @@ img{max-width:100%;display:block}
     <div class="intro-copy">
       <div class="kicker reveal">KENALI SOHHO</div>
       <h2 class="heading reveal" style="--d:.08s">Peralatan tepat untuk <em>kerja di tempat tinggi.</em></h2>
-      <p class="reveal" style="--d:.16s">SOHHO menyediakan perkhidmatan sewa skylift di Pantai Timur, dengan pengalaman lebih dua dekad dalam perkhidmatan pengiklanan dan skylift.</p>
+      <p class="reveal" style="--d:.16s">SOHHO Advertising &amp; Engineering menyediakan perkhidmatan sewa skylift di Pantai Timur, dengan pengalaman lebih dua dekad dalam perkhidmatan pengiklanan dan skylift. Kami beroperasi di bawah Jelira Marketing, kontraktor berdaftar CIDB yang berpangkalan di Ketereh, Kelantan.</p>
       <p class="reveal" style="--d:.22s">Kongsikan lokasi, anggaran ketinggian dan jenis kerja. Kami bantu semak pilihan mesin serta keperluan tapak sebelum sebut harga dimuktamadkan.</p>
       <div class="stat-row reveal" style="--d:.3s">
         <div><strong><span data-count="20">20</span>+ tahun</strong><small>Pengalaman</small></div>
@@ -510,6 +533,32 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
+<section class="section section-light" id="pendaftaran">
+  <div class="wrap reg-grid">
+    <div>
+      <div class="kicker reveal">KONTRAKTOR BERDAFTAR</div>
+      <h2 class="heading reveal" style="--d:.08s">Berdaftar dengan <em>CIDB &amp; PKK.</em></h2>
+      <p class="sub reveal" style="--d:.14s">SOHHO Advertising &amp; Engineering beroperasi di bawah Jelira Marketing — kontraktor berdaftar dengan Lembaga Pembangunan Industri Pembinaan Malaysia (CIDB) dan diiktiraf bertaraf Bumiputera oleh Pusat Khidmat Kontraktor (PKK).</p>
+      <div class="reg-badges reveal" style="--d:.18s"><span>CIDB G3</span><span>TARAF BUMIPUTERA</span><span>SPKK</span></div>
+      <dl class="reg-facts reveal" style="--d:.22s">
+        <div class="wide"><dt>Nama berdaftar</dt><dd>Jelira Marketing</dd></div>
+        <div class="wide"><dt>No. pendaftaran CIDB</dt><dd>0120250715-KN157889</dd></div>
+        <div class="wide"><dt>Gred &amp; kategori</dt><dd>G3 · B (Pembinaan Bangunan) · CE (Pembinaan Kejuruteraan Awam) · ME (Mekanikal &amp; Elektrikal)</dd></div>
+        <div><dt>Pengkhususan</dt><dd>B04 B11 B14 B24 B28 · CE01 CE02 CE12 CE13 CE21 · M15</dd></div>
+        <div><dt>Sah laku sehingga</dt><dd>14 Julai 2027</dd></div>
+      </dl>
+    </div>
+    <div>
+      <div class="certs">
+        <button class="cert reveal" data-lightbox="assets/sijil-ppk.jpg"><span class="cert-paper"><img src="assets/sijil-ppk.jpg" loading="lazy" alt="Perakuan Pendaftaran CIDB Jelira Marketing"></span><b>Perakuan Pendaftaran</b><small>CIDB Malaysia</small></button>
+        <button class="cert reveal" style="--d:.1s" data-lightbox="assets/sijil-spkk.jpg"><span class="cert-paper"><img src="assets/sijil-spkk.jpg" loading="lazy" alt="Sijil Perolehan Kerja Kerajaan CIDB Jelira Marketing"></span><b>Sijil Perolehan Kerja Kerajaan</b><small>CIDB Malaysia</small></button>
+        <button class="cert reveal" style="--d:.2s" data-lightbox="assets/sijil-bumi.jpg"><span class="cert-paper"><img src="assets/sijil-bumi.jpg" loading="lazy" alt="Sijil Taraf Bumiputera Jelira Marketing"></span><b>Sijil Taraf Bumiputera</b><small>Pusat Khidmat Kontraktor</small></button>
+      </div>
+      <p class="reg-note reveal">Tekan sijil untuk paparan penuh. Maklumat peribadi pegawai syarikat disembunyikan.</p>
+    </div>
+  </div>
+</section>
+
 <section class="section section-dark">
   <div class="wrap how">
     <div>
@@ -562,10 +611,11 @@ img{max-width:100%;display:block}
   <div class="wrap">
     <div class="kicker reveal">SEDIA UNTUK BERGERAK?</div>
     <h2 class="heading reveal" style="--d:.08s">Kerja tinggi anda<br><em>bermula di sini.</em></h2>
-    <p class="reveal" style="--d:.14s">Hubungi SOHHO di <b>017-894 1093</b> untuk semak ketersediaan,<br>kesesuaian mesin dan sebut harga.</p>
+    <p class="reveal" style="--d:.14s">Hubungi SOHHO di <b>017-894 1093</b> untuk semak ketersediaan,<br>kesesuaian mesin dan sebut harga. Talian lain: <a href="tel:+60139981855">013-998 1855</a> · <a href="tel:+60129488155">012-948 8155</a></p>
     <div class="actions reveal" style="justify-content:center;--d:.2s">
       <a class="btn btn-red" href="https://wa.me/60178941093" data-wa target="_blank" rel="noopener">WHATSAPP 017-894 1093 <span class="arrow">↗</span></a>
       <a class="btn btn-ghost" href="tel:+60178941093">HUBUNGI TERUS <span class="arrow">↗</span></a>
+      <a class="btn btn-ghost" href="mailto:jeliramarketing@gmail.com">E-MEL KAMI <span class="arrow">↗</span></a>
     </div>
   </div>
   <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true">
@@ -581,11 +631,11 @@ img{max-width:100%;display:block}
 <footer class="footer">
   <div class="wrap">
     <div class="footgrid">
-      <div><h4 class="serif" style="font-size:24px;letter-spacing:.12em">SOHHO</h4><p>Perkhidmatan sewa skylift 15 hingga 44 meter di Pantai Timur, dengan pengalaman lebih 20 tahun.<br><i>Kerja tinggi, jadi lebih mudah.</i></p></div>
-      <div><h4>Hubungi Kami</h4><p><a href="tel:+60178941093">017-894 1093</a><br><a href="https://wa.me/60178941093" data-wa target="_blank" rel="noopener">WhatsApp SOHHO</a></p></div>
-      <div><h4>Pautan</h4><p><a href="#harga">Kadar sewaan</a><br><a href="#servis">Perkhidmatan</a><br><a href="#galeri">Galeri kerja</a><br><a href="#soalan">Soalan lazim</a></p></div>
+      <div><img class="foot-logo" src="assets/logo.png" alt="SOHHO Advertising &amp; Engineering" loading="lazy" width="640" height="498"><p>Sewa skylift 15 hingga 44 meter di Pantai Timur, dengan pengalaman lebih 20 tahun. Kontraktor berdaftar CIDB G3.<br><i>Kerja tinggi, jadi lebih mudah.</i></p></div>
+      <div><h4>Hubungi Kami</h4><p><a href="https://wa.me/60178941093" data-wa target="_blank" rel="noopener">WhatsApp 017-894 1093</a><br><a href="tel:+60139981855">013-998 1855</a> · <a href="tel:+60129488155">012-948 8155</a><br><a href="mailto:jeliramarketing@gmail.com">jeliramarketing@gmail.com</a><br><a href="https://www.facebook.com/search/top?q=Jelira%20Sign" target="_blank" rel="noopener">Facebook: Jelira Sign</a></p></div>
+      <div><h4>Alamat</h4><p>Jelira Marketing<br>Lot 1985 A, B &amp; C, Jalan Ketereh–Kok Lanas,<br>Kg. Pangkal Kuang, 16450 Ketereh, Kelantan.</p></div>
     </div>
-    <div class="copyright">© <span id="year"></span> SOHHO. Hak cipta terpelihara. Harga rujukan tertakluk kepada lokasi, tempoh dan skop kerja.</div>
+    <div class="copyright">© <span id="year"></span> SOHHO Advertising &amp; Engineering (Jelira Marketing · CIDB 0120250715-KN157889). Hak cipta terpelihara. Harga rujukan tertakluk kepada lokasi, tempoh dan skop kerja.</div>
   </div>
 </footer>
 

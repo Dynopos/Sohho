@@ -5,7 +5,8 @@ Reka bentuk mengikut gaya laman Naami Stable (loader, hero penuh skrin, marquee,
 
 ## Struktur
 - `index.html` — keseluruhan laman (gaya & skrip sebaris)
-- `assets/` — logo (`logo.svg`) dan gambar kerja skylift (`*.jpg` saiz penuh, `*-sm.jpg` untuk galeri)
+- `assets/` — logo (`logo.png`, `favicon.png`), gambar kerja skylift (`*.jpg` saiz penuh, `*-sm.jpg` untuk galeri)
+  dan sijil pendaftaran (`sijil-*.jpg`, maklumat peribadi pegawai disembunyikan — jangan muat naik PDF asal)
 - `CNAME` — domain GitHub Pages (`sohho.my`)
 
 ## Kemas kini biasa
