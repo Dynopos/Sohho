@@ -29,3 +29,14 @@ dan skrol sahaja tidak memulakannya. Butang bulat kecil di kiri bawah memainkan/
 Untuk tukar, ganti fail itu dengan nama yang sama, contohnya:
 
     ffmpeg -ss 23.6 -to 32.15 -i lagu.m4a -map 0:a:0 -af "afade=t=in:st=0:d=0.08,afade=t=out:st=8.1:d=0.45" -c:a libmp3lame -b:a 128k assets/chorus.mp3
+
+## Video TikTok
+Bahagian **Video** (`id="video"`) memaparkan profil TikTok @jelirasign melalui embed rasmi TikTok — video terkini
+dipaparkan sendiri, tiada apa perlu dikemas kini. Skrip TikTok hanya dimuatkan bila pelawat hampir sampai ke bahagian itu.
+
+Untuk "pin" video tertentu dalam bingkai telefon di atas profil, tambah ID video (nombor di hujung pautan
+`tiktok.com/@jelirasign/video/...`) ke senarai `TIKTOK_VIDEOS` dalam skrip `index.html`:
+
+    { id: '7412345678901234567', title: 'Pemasangan papan tanda', note: 'Kota Bharu', poster: 'assets/kerja-11-sm.jpg' },
+
+`poster` adalah pilihan; tanpanya, gambar muka diambil daripada TikTok. Video hanya dimuatkan bila ditekan.
