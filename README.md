@@ -23,9 +23,11 @@ Reka bentuk mengikut gaya laman Naami Stable (loader, hero penuh skrin, marquee,
       convert asal.jpg -resize '720x>' -strip -interlace Plane -quality 74 assets/nama-sm.jpg
 
 ## Lagu (chorus)
-`assets/chorus.mp3` ialah bahagian chorus lagu "Sohho Skylift" (saat 23.6–32.1 lagu asal, ~8.6 saat). Ia mula berbunyi pada
-sentuhan/klik pertama di mana-mana bahagian laman — pelayar tidak membenarkan audio berbunyi sebelum pelawat berinteraksi,
-dan skrol sahaja tidak memulakannya. Butang bulat kecil di kiri bawah memainkan/menghentikan lagu.
-Untuk tukar, ganti fail itu dengan nama yang sama, contohnya:
+`assets/chorus.mp3` ialah chorus lagu "Sohho Skylift" yang diulang hingga ~2 minit (16 pusingan × 7.575 saat, iaitu
+4 bar pada ~127 BPM, mula saat 23.70 lagu asal), disambung tepat pada rentak dengan crossfade 20ms dan fade-out 3 saat
+di hujung. Ia mula berbunyi pada sentuhan/klik pertama di mana-mana bahagian laman — pelayar tidak membenarkan audio
+berbunyi sebelum pelawat berinteraksi, dan skrol sahaja tidak memulakannya. Butang bulat kecil di kiri bawah
+memainkan/menghentikan lagu. Fail hanya dimuat turun bila mula dimainkan.
 
-    ffmpeg -ss 23.6 -to 32.15 -i lagu.m4a -map 0:a:0 -af "afade=t=in:st=0:d=0.08,afade=t=out:st=8.1:d=0.45" -c:a libmp3lame -b:a 128k assets/chorus.mp3
+Untuk bina semula: potong satu pusingan (`ffmpeg -ss 23.70 -t 7.62 -i lagu.m4a -ar 48000 -ac 2 seg.wav`), ulang 16 kali
+dengan sambungan setiap 7.575 saat, kemudian `ffmpeg -i loop.wav -c:a libmp3lame -b:a 96k assets/chorus.mp3`.
