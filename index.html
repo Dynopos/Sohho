@@ -282,15 +282,9 @@ img{max-width:100%;display:block}
 .tt-screen button:before{content:"";position:absolute;inset:0;background:radial-gradient(circle,#0000 30%,#0009)}
 .tt-screen button i{position:relative;width:66px;height:66px;border-radius:50%;background:#ffffffd9;display:grid;place-items:center}
 .tt-screen button i:after{content:"";margin-left:5px;border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent #0d1828}
+.tt-screen button em{position:absolute;left:0;right:0;bottom:16px;font-style:normal;font-size:11px;letter-spacing:.12em;color:#ffffffcc}
 .tt-reel figcaption{text-align:center;margin-top:20px;color:var(--muted);font-size:13px}
 .tt-reel figcaption b{display:block;font-family:'Playfair Display',serif;font-size:21px;font-weight:600;color:#fff}
-.tt-profile{margin:50px auto 0;max-width:780px;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 30px 70px #0008}
-.tt-profile .tiktok-embed{margin:0!important}
-.tt-fallback{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:28px;color:#152233}
-.tt-fallback img{width:84px;height:auto}
-.tt-fallback b{display:block;font-family:'Playfair Display',serif;font-size:22px}
-.tt-fallback span{color:#66788a;font-size:13.5px}
-.tt-fallback .btn{margin-left:auto}
 .video-cta{text-align:center;margin-top:40px}
 
 /* faq */
@@ -415,7 +409,6 @@ img{max-width:100%;display:block}
   .section{padding:64px 0}
   .marquee-track{font-size:18px}
   .tt-reels{margin:34px -16px 0;padding:10px 16px 24px}
-  .tt-fallback{padding:22px}.tt-fallback .btn{margin-left:0;width:100%}
 }
 @media(prefers-reduced-motion:reduce){
   *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
@@ -698,16 +691,12 @@ img{max-width:100%;display:block}
       <div>
         <div class="kicker reveal" style="color:var(--coral)">VIDEO TIKTOK · @JELIRASIGN</div>
         <h2 class="heading reveal" style="--d:.08s">Lihat SOHHO <em>beraksi.</em></h2>
-        <p class="sub reveal" style="--d:.14s">Video kerja skylift terkini terus dari TikTok kami — pemasangan papan tanda, kerja bangunan, jambatan dan banyak lagi.</p>
+        <p class="sub reveal" style="--d:.14s">Video kerja skylift SOHHO dari TikTok kami. Tekan video untuk menonton.</p>
       </div>
       <a class="btn btn-tt reveal" style="--d:.2s" href="https://www.tiktok.com/@jelirasign" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg> IKUTI @JELIRASIGN <span class="arrow">↗</span></a>
     </div>
     <div class="tt-reels" id="ttReels"></div>
-    <div class="tt-profile reveal" id="ttProfile">
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@jelirasign" data-unique-id="jelirasign" data-embed-type="creator" style="max-width:780px;min-width:288px">
-        <section class="tt-fallback"><img src="assets/logo.png" alt="" width="640" height="498" loading="lazy"><div><b>@jelirasign</b><span>Video kerja skylift SOHHO Advertising &amp; Engineering di TikTok.</span></div><a class="btn btn-tt" target="_blank" rel="noopener" href="https://www.tiktok.com/@jelirasign?refer=creator_embed"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg> BUKA TIKTOK <span class="arrow">↗</span></a></section>
-      </blockquote>
-    </div>
+    <div class="video-cta reveal"><a class="btn btn-ghost" href="https://www.tiktok.com/@jelirasign" target="_blank" rel="noopener">LIHAT LEBIH BANYAK VIDEO DI TIKTOK <span class="arrow">↗</span></a></div>
   </div>
 </section>
 
@@ -892,33 +881,33 @@ img{max-width:100%;display:block}
     else if (e.key === 'Escape') setMenu(false);
   });
 
-  /* ---------- TikTok: pinned videos in phone frames + the @jelirasign profile embed ---------- */
-  // To pin specific videos, add their IDs (the number at the end of a TikTok video link,
-  // e.g. tiktok.com/@jelirasign/video/7412345678901234567) with a short title.
+  /* ---------- TikTok videos in phone frames ---------- */
+  // Paste each video's TikTok link (the short vt.tiktok.com link from the app works too) with a title.
+  // A full link (tiktok.com/@jelirasign/video/<number>) plays right on the page; a short link is
+  // turned into one via TikTok's oEmbed in the visitor's browser, and if that fails the tap opens TikTok.
   const TIKTOK_VIDEOS = [
-    // { id: '7412345678901234567', title: 'Pemasangan papan tanda', note: 'Kota Bharu', poster: 'assets/kerja-11-sm.jpg' },
+    { url: 'https://vt.tiktok.com/ZSgUvdx6C/', title: 'Video kerja SOHHO', note: 'TikTok @jelirasign', poster: 'assets/kerja-13-sm.jpg' },
   ];
   const reelsBox = $('#ttReels');
+  const oembed = url => fetch(`https://www.tiktok.com/oembed?url=${encodeURIComponent(url)}`).then(r => r.ok ? r.json() : Promise.reject());
   TIKTOK_VIDEOS.forEach(v => {
-    const fig = document.createElement('figure'); fig.className = 'tt-reel';
-    fig.innerHTML = `<div class="tt-phone"><div class="tt-screen"><button aria-label="Main video: ${v.title}"><i></i></button></div></div><figcaption><b>${v.title}</b>${v.note || ''}</figcaption>`;
-    // Cover image: a local `poster` if given, else TikTok's own thumbnail (if the oEmbed lookup is allowed)
+    const fig = document.createElement('figure'); fig.className = 'tt-reel reveal in';
+    fig.innerHTML = `<div class="tt-phone"><div class="tt-screen"><button aria-label="Main video: ${v.title}"><i></i><em>TEKAN UNTUK MAIN</em></button></div></div><figcaption><b>${v.title}</b>${v.note || ''}</figcaption>`;
     const play = fig.querySelector('button');
+    let id = (v.url.match(/\/video\/(\d+)/) || [])[1];
     if (v.poster) play.style.backgroundImage = `url(${v.poster})`;
-    else fetch(`https://www.tiktok.com/oembed?url=${encodeURIComponent(`https://www.tiktok.com/@jelirasign/video/${v.id}`)}`)
-      .then(r => r.json()).then(j => { if (j.thumbnail_url) play.style.backgroundImage = `url("${j.thumbnail_url}")`; }).catch(() => {});
+    oembed(v.url).then(j => {
+      id = id || j.embed_product_id || ((j.html || '').match(/data-video-id="(\d+)"/) || [])[1];
+      if (!v.poster && j.thumbnail_url) play.style.backgroundImage = `url("${j.thumbnail_url}")`;
+    }).catch(() => {});
     // The TikTok player loads only when tapped, so the page stays light
     play.addEventListener('click', e => {
-      e.currentTarget.outerHTML = `<iframe src="https://www.tiktok.com/player/v1/${v.id}?autoplay=1&music_info=1&description=0&rel=0" allow="autoplay; fullscreen; encrypted-media" title="${v.title}"></iframe>`;
       jingle.pause();
+      if (!id) { window.open(v.url, '_blank', 'noopener'); return; }
+      e.currentTarget.outerHTML = `<iframe src="https://www.tiktok.com/player/v1/${id}?autoplay=1&music_info=1&description=0&rel=0" allow="autoplay; fullscreen; encrypted-media" title="${v.title}"></iframe>`;
     });
     reelsBox.appendChild(fig);
   });
-  // TikTok's embed script turns the blockquote into the live profile feed; load it only when the section is near
-  new IntersectionObserver(([e], o) => {
-    if (!e.isIntersecting) return; o.disconnect();
-    const sc = document.createElement('script'); sc.src = 'https://www.tiktok.com/embed.js'; sc.async = true; document.body.appendChild(sc);
-  }, { rootMargin: '600px 0px' }).observe($('#ttProfile'));
 
   /* ---------- Jingle: the SOHHO chorus plays on the first tap, small button to switch it on/off ---------- */
   // Browsers block sound until the visitor interacts, so the chorus starts on the
