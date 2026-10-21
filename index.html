@@ -98,6 +98,8 @@ img{max-width:100%;display:block}
 .btn-wa{background:var(--wa);color:#05210f}
 .btn-wa:hover{transform:translateY(-3px);background:#3be07a}
 .btn svg{width:16px;height:16px;flex:none}
+.btn-tt{background:#000;color:#fff;box-shadow:inset 0 0 0 1px #ffffff2e,-2px -2px 0 #25f4ee55,2px 2px 0 #fe2c5555}
+.btn-tt:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 1px #ffffff40,-3px -3px 0 #25f4ee,3px 3px 0 #fe2c55}
 .arrow{transition:transform .35s var(--ease)}
 .btn:hover .arrow{transform:translate(3px,-3px)}
 .hero-bottom{display:flex;gap:42px;margin-top:70px;color:#e4edf5;font-size:13px}
@@ -242,13 +244,26 @@ img{max-width:100%;display:block}
 .step p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.65}
 
 /* gallery */
-.gallery{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:300px 300px;gap:14px;margin-top:40px}
-.g-item{position:relative;overflow:hidden;border-radius:12px;border:0;padding:0;background:#ddd;cursor:zoom-in}
-.g-item:first-child{grid-row:span 2}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+.chip{border:1px solid #15223326;background:#fff;color:#152233;border-radius:40px;padding:9px 15px;font-size:12.5px;font-weight:700;transition:.3s var(--ease)}
+.chip small{font-weight:500;color:#7a8794;margin-left:2px}
+.chip:hover{border-color:var(--red);transform:translateY(-2px)}
+.chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.chip.on small{color:#aebbd0}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-flow:dense;gap:14px;margin-top:28px}
+.g-item{position:relative;display:block;aspect-ratio:1;overflow:hidden;border-radius:12px;border:0;padding:0;background:#dcd8cf;cursor:zoom-in;animation:gin .6s var(--ease) both}
+.g-item.wide{grid-column:span 2;aspect-ratio:auto}
+.g-item[hidden]{display:none}
+@keyframes gin{from{opacity:0;transform:translateY(18px)}}
 .g-item img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .6s}
-.g-item:hover img{transform:scale(1.08);filter:saturate(1.1)}
-.g-item span{position:absolute;left:14px;bottom:14px;background:#070d16bb;color:#fff;font-size:12px;padding:7px 12px;border-radius:30px;backdrop-filter:blur(6px);transform:translateY(10px);opacity:0;transition:.4s var(--ease)}
+.g-item:hover img{transform:scale(1.06);filter:saturate(1.1)}
+.g-item:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#070d16b3,transparent 45%);opacity:0;transition:opacity .4s}
+.g-item span{position:absolute;z-index:1;left:16px;right:16px;bottom:14px;color:#fff;font-size:14px;font-weight:600;text-align:left;transform:translateY(10px);opacity:0;transition:.4s var(--ease)}
+.g-item span small{display:block;font-size:9.5px;letter-spacing:.16em;color:var(--coral);font-weight:700;margin-bottom:3px}
+.g-item:hover:after,.g-item:focus-visible:after{opacity:1}
 .g-item:hover span,.g-item:focus-visible span{transform:none;opacity:1}
+.gallery-more{text-align:center;margin-top:20px}
+.gallery-more[hidden]{display:none}
 
 /* faq */
 .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}
@@ -265,6 +280,11 @@ img{max-width:100%;display:block}
 .lightbox.open{opacity:1;pointer-events:auto}
 .lightbox img{max-height:88vh;max-width:min(92vw,1100px);width:auto;border-radius:10px;transform:scale(.92);transition:transform .5s var(--ease);box-shadow:0 30px 80px #000a}
 .lightbox.open img{transform:none}
+.lb-nav{position:absolute;top:50%;width:50px;height:50px;margin-top:-25px;border-radius:50%;border:1px solid #ffffff44;background:#ffffff14;font-size:26px;line-height:1;transition:background .3s}
+.lb-nav:hover{background:#ffffff2e}
+.lb-prev{left:18px}.lb-next{right:18px}
+.lb-nav[hidden],.lb-count[hidden]{display:none}
+.lb-count{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);font-size:12px;letter-spacing:.12em;color:#c9d5e1;text-align:center;max-width:90vw}
 .lb-close{position:absolute;top:18px;right:18px;width:46px;height:46px;border-radius:50%;border:1px solid #ffffff44;background:#ffffff14;font-size:22px}
 
 /* CTA */
@@ -327,8 +347,7 @@ img{max-width:100%;display:block}
   .exp-media{height:420px}
   .project-media{height:380px}
   .k-commit{grid-template-columns:1fr;padding:26px}
-  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:280px 200px 200px}
-  .g-item:first-child{grid-column:1/-1;grid-row:auto}
+  .gallery{grid-template-columns:1fr 1fr}
   .footgrid{grid-template-columns:1fr 1fr}
   .section{padding:80px 0}
 }
@@ -351,7 +370,9 @@ img{max-width:100%;display:block}
   .reg-facts{grid-template-columns:1fr}
   .certs{gap:10px}
   .cert b{font-size:12px}.cert small{font-size:11px}
-  .gallery{grid-template-rows:240px 170px 170px;gap:8px}
+  .gallery{gap:8px}.g-item.wide{aspect-ratio:2/1}.g-item{border-radius:9px}
+  .g-item:after{opacity:1}.g-item span{opacity:1;transform:none;font-size:11.5px;left:10px;bottom:9px}.g-item span small{display:none}
+  .chips{flex-wrap:nowrap;overflow-x:auto;margin-left:-16px;margin-right:-16px;padding:0 16px 4px;scrollbar-width:none}.chip{flex:none}
   .faq-item summary{font-size:17px}
   .faq-item p{padding-right:0}
   .footgrid{grid-template-columns:1fr}
@@ -591,14 +612,48 @@ img{max-width:100%;display:block}
   <div class="wrap">
     <div class="kicker reveal">GALERI KERJA</div>
     <h2 class="heading reveal" style="--d:.08s">Pengalaman di <em>pelbagai tapak.</em></h2>
-    <p class="sub reveal" style="--d:.14s">Antara kerja skylift SOHHO di bangunan, ruang dalaman dan struktur luar. Tekan gambar untuk paparan penuh.</p>
-    <div class="gallery">
-      <button class="g-item reveal" data-lightbox="assets/skylift-lori-sohho.jpg"><img src="assets/skylift-lori-sohho-sm.jpg" loading="lazy" alt="Lori skylift SOHHO di hadapan bangunan bertingkat"><span>Kerja pada aras tinggi</span></button>
-      <button class="g-item reveal" style="--d:.1s" data-lightbox="assets/skylift-bakul.jpg"><img src="assets/skylift-bakul-sm.jpg" loading="lazy" alt="Bakul skylift SOHHO di sisi bangunan merah"><span>Akses ruang kerja</span></button>
-      <button class="g-item reveal" style="--d:.2s" data-lightbox="assets/skylift-fakulti.jpg"><img src="assets/skylift-fakulti-sm.jpg" loading="lazy" alt="Skylift SOHHO digunakan pada bangunan institusi"><span>Kerja luar bangunan</span></button>
-      <button class="g-item reveal" style="--d:.15s" data-lightbox="assets/skylift-menara.jpg"><img src="assets/skylift-menara-sm.jpg" loading="lazy" alt="Skylift mencapai struktur menara logam tinggi"><span>Jangkauan tinggi</span></button>
-      <button class="g-item reveal" style="--d:.25s" data-lightbox="assets/skylift-hangar.jpg"><img src="assets/skylift-hangar-sm.jpg" loading="lazy" alt="Lengan skylift mencapai bahagian tinggi dalam hangar"><span>Ruang dalaman</span></button>
+    <p class="sub reveal" style="--d:.14s">37 gambar kerja skylift SOHHO — bangunan, papan iklan, menara, jambatan, hangar dan tepi jalan. Tekan gambar untuk paparan penuh.</p>
+    <div class="chips reveal" style="--d:.2s" role="group" aria-label="Tapis galeri"><button class="chip on" data-filter="semua" aria-pressed="true">Semua <small>37</small></button><button class="chip" data-filter="bangunan" aria-pressed="false">Bangunan <small>14</small></button><button class="chip" data-filter="iklan" aria-pressed="false">Papan iklan &amp; tanda <small>7</small></button><button class="chip" data-filter="struktur" aria-pressed="false">Menara, jambatan &amp; tiang <small>9</small></button><button class="chip" data-filter="dalaman" aria-pressed="false">Hangar &amp; gudang <small>5</small></button><button class="chip" data-filter="pokok" aria-pressed="false">Pokok &amp; jalan raya <small>2</small></button></div>
+    <div class="gallery" id="gallery">
+      <button class="g-item" data-cat="iklan" data-lightbox="assets/kerja-01.jpg"><img src="assets/kerja-01-sm.jpg" width="720" height="541" loading="lazy" alt="Lori skylift SOHHO memasang papan tanda bangunan pada waktu malam"><span><small>PAPAN IKLAN &amp; TANDA</small>Papan tanda bangunan, waktu malam</span></button>
+      <button class="g-item" data-cat="struktur" data-lightbox="assets/kerja-02.jpg"><img src="assets/kerja-02-sm.jpg" width="720" height="540" loading="lazy" alt="Skylift SOHHO membawa pekerja ke bawah struktur jambatan"><span><small>MENARA, JAMBATAN &amp; TIANG</small>Pemeriksaan jambatan</span></button>
+      <button class="g-item" data-cat="bangunan" data-lightbox="assets/kerja-06.jpg"><img src="assets/kerja-06-sm.jpg" width="720" height="960" loading="lazy" alt="Bakul skylift SOHHO di aras atas bangunan merah"><span><small>BANGUNAN</small>Fasad bangunan empat tingkat</span></button>
+      <button class="g-item" data-cat="dalaman" data-lightbox="assets/kerja-03.jpg"><img src="assets/kerja-03-sm.jpg" width="720" height="540" loading="lazy" alt="Lori skylift SOHHO di dalam hangar helikopter"><span><small>HANGAR &amp; GUDANG</small>Hangar pesawat</span></button>
+      <button class="g-item" data-cat="iklan" data-lightbox="assets/kerja-11.jpg"><img src="assets/kerja-11-sm.jpg" width="720" height="960" loading="lazy" alt="Pekerja di bakul skylift memasang papan tanda pada dinding bangunan"><span><small>PAPAN IKLAN &amp; TANDA</small>Pemasangan papan tanda</span></button>
+      <button class="g-item" data-cat="pokok" data-lightbox="assets/kerja-04.jpg"><img src="assets/kerja-04-sm.jpg" width="720" height="541" loading="lazy" alt="Skylift SOHHO memangkas pokok di tepi jalan raya"><span><small>POKOK &amp; JALAN RAYA</small>Pemangkasan pokok tepi jalan</span></button>
+      <button class="g-item" data-cat="iklan" data-lightbox="assets/kerja-05.jpg"><img src="assets/kerja-05-sm.jpg" width="720" height="540" loading="lazy" alt="Skylift SOHHO di sebelah papan iklan besar"><span><small>PAPAN IKLAN &amp; TANDA</small>Papan iklan tepi lebuh raya</span></button>
+      <button class="g-item" data-cat="struktur" data-lightbox="assets/kerja-22.jpg"><img src="assets/kerja-22-sm.jpg" width="720" height="960" loading="lazy" alt="Skylift SOHHO di menara tangki air"><span><small>MENARA, JAMBATAN &amp; TIANG</small>Puncak menara air</span></button>
+      <button class="g-item" data-cat="struktur" data-lightbox="assets/kerja-07.jpg"><img src="assets/kerja-07-sm.jpg" width="720" height="540" loading="lazy" alt="Skylift SOHHO mencapai lampu tiang tinggi di padang"><span><small>MENARA, JAMBATAN &amp; TIANG</small>Lampu tiang tinggi</span></button>
+      <button class="g-item" data-cat="struktur" data-lightbox="assets/skylift-menara.jpg"><img src="assets/skylift-menara-sm.jpg" width="800" height="600" loading="lazy" alt="Skylift mencapai puncak menara tangki air"><span><small>MENARA, JAMBATAN &amp; TIANG</small>Menara tangki air</span></button>
+      <button class="g-item" data-cat="struktur" data-lightbox="assets/kerja-08.jpg"><img src="assets/kerja-08-sm.jpg" width="720" height="540" loading="lazy" alt="Skylift SOHHO memasang antena di bumbung stesen minyak"><span><small>MENARA, JAMBATAN &amp; TIANG</small>Antena telekomunikasi</span></button>
+      <button class="g-item" data-cat="bangunan" data-lightbox="assets/skylift-lori-sohho.jpg"><img src="assets/skylift-lori-sohho-sm.jpg" width="800" height="600" loading="lazy" alt="Lori skylift SOHHO di hadapan bangunan fakulti"><span><small>BANGUNAN</small>Bumbung bangunan fakulti</span></button>
+      <button class="g-item wide" data-cat="bangunan" data-lightbox="assets/kerja-09.jpg"><img src="assets/kerja-09-sm.jpg" width="720" height="326" loading="lazy" alt="Lengan skylift oren menjangkau ke atas bumbung bangunan"><span><small>BANGUNAN</small>Bumbung bangunan pejabat</span></button>
+      <button class="g-item wide" data-cat="bangunan" data-lightbox="assets/kerja-10.jpg"><img src="assets/kerja-10-sm.jpg" width="720" height="326" loading="lazy" alt="Skylift SOHHO bekerja di bangunan pejabat"><span><small>BANGUNAN</small>Bangunan pejabat dua tingkat</span></button>
+      <button class="g-item" data-cat="iklan" data-lightbox="assets/kerja-12.jpg"><img src="assets/kerja-12-sm.jpg" width="720" height="960" loading="lazy" alt="Bakul skylift SOHHO di sebelah papan tanda bangunan"><span><small>PAPAN IKLAN &amp; TANDA</small>Huruf timbul di aras tinggi</span></button>
+      <button class="g-item" data-cat="iklan" data-lightbox="assets/kerja-13.jpg"><img src="assets/kerja-13-sm.jpg" width="720" height="960" loading="lazy" alt="Lori skylift Volvo SOHHO pada waktu malam di bandar"><span><small>PAPAN IKLAN &amp; TANDA</small>Kerja malam di bandar</span></button>
+      <button class="g-item" data-cat="bangunan" data-lightbox="assets/kerja-14.jpg"><img src="assets/kerja-14-sm.jpg" width="720" height="960" loading="lazy" alt="Skylift SOHHO mencapai dinding atas bangunan tinggi"><span><small>BANGUNAN</small>Dinding bangunan tinggi</span></button>
+      <button class="g-item" data-cat="bangunan" data-lightbox="assets/kerja-15.jpg"><img src="assets/kerja-15-sm.jpg" width="720" height="960" loading="lazy" alt="Skylift SOHHO bekerja di antara bangunan"><span><small>BANGUNAN</small>Akses di ruang sempit</span></button>
+      <button class="g-item" data-cat="dalaman" data-lightbox="assets/kerja-16.jpg"><img src="assets/kerja-16-sm.jpg" width="720" height="960" loading="lazy" alt="Lori skylift SOHHO di dalam gudang"><span><small>HANGAR &amp; GUDANG</small>Gudang kilang</span></button>
+      <button class="g-item" data-cat="dalaman" data-lightbox="assets/kerja-17.jpg"><img src="assets/kerja-17-sm.jpg" width="720" height="960" loading="lazy" alt="Lengan skylift mencapai bumbung gudang tinggi"><span><small>HANGAR &amp; GUDANG</small>Bumbung gudang</span></button>
+      <button class="g-item" data-cat="pokok" data-lightbox="assets/kerja-18.jpg"><img src="assets/kerja-18-sm.jpg" width="720" height="541" loading="lazy" alt="Skylift SOHHO di tepi jalan dengan kon keselamatan"><span><small>POKOK &amp; JALAN RAYA</small>Kawalan lalu lintas di tapak</span></button>
+      <button class="g-item" data-cat="iklan" data-lightbox="assets/kerja-19.jpg"><img src="assets/kerja-19-sm.jpg" width="720" height="960" loading="lazy" alt="Skylift SOHHO mencapai rangka papan iklan"><span><small>PAPAN IKLAN &amp; TANDA</small>Struktur papan iklan</span></button>
+      <button class="g-item" data-cat="iklan" data-lightbox="assets/skylift-papan-iklan.jpg"><img src="assets/skylift-papan-iklan-sm.jpg" width="800" height="600" loading="lazy" alt="Skylift mencapai struktur papan iklan di kawasan terbuka"><span><small>PAPAN IKLAN &amp; TANDA</small>Rangka papan iklan</span></button>
+      <button class="g-item" data-cat="bangunan" data-lightbox="assets/kerja-20.jpg"><img src="assets/kerja-20-sm.jpg" width="720" height="540" loading="lazy" alt="Lori skylift Volvo SOHHO di tapak pembinaan bangunan merah"><span><small>BANGUNAN</small>Tapak pembinaan</span></button>
+      <button class="g-item" data-cat="bangunan" data-lightbox="assets/kerja-21.jpg"><img src="assets/kerja-21-sm.jpg" width="720" height="960" loading="lazy" alt="Lengan skylift di sisi bangunan merah"><span><small>BANGUNAN</small>Bangunan dalam pembinaan</span></button>
+      <button class="g-item" data-cat="bangunan" data-lightbox="assets/skylift-bakul.jpg"><img src="assets/skylift-bakul-sm.jpg" width="600" height="800" loading="lazy" alt="Bakul skylift SOHHO di sisi bangunan merah"><span><small>BANGUNAN</small>Bakul di aras atas</span></button>
+      <button class="g-item" data-cat="bangunan" data-lightbox="assets/skylift-bangunan.jpg"><img src="assets/skylift-bangunan-sm.jpg" width="600" height="800" loading="lazy" alt="Lori skylift SOHHO di hadapan bangunan bertingkat"><span><small>BANGUNAN</small>Kerja di tapak pembinaan</span></button>
+      <button class="g-item" data-cat="struktur" data-lightbox="assets/kerja-23.jpg"><img src="assets/kerja-23-sm.jpg" width="720" height="956" loading="lazy" alt="Lori skylift FUSO SOHHO di sebelah menara air"><span><small>MENARA, JAMBATAN &amp; TIANG</small>Menara air — pandangan hadapan</span></button>
+      <button class="g-item" data-cat="bangunan" data-lightbox="assets/kerja-24.jpg"><img src="assets/kerja-24-sm.jpg" width="720" height="540" loading="lazy" alt="Lori skylift SOHHO di hadapan bangunan fakulti"><span><small>BANGUNAN</small>Kerja bumbung</span></button>
+      <button class="g-item" data-cat="bangunan" data-lightbox="assets/skylift-fakulti.jpg"><img src="assets/skylift-fakulti-sm.jpg" width="600" height="800" loading="lazy" alt="Skylift SOHHO pada bangunan institusi"><span><small>BANGUNAN</small>Bangunan institusi</span></button>
+      <button class="g-item" data-cat="dalaman" data-lightbox="assets/kerja-25.jpg"><img src="assets/kerja-25-sm.jpg" width="720" height="960" loading="lazy" alt="Kru di bakul skylift di dalam hangar"><span><small>HANGAR &amp; GUDANG</small>Hangar — kru bersedia</span></button>
+      <button class="g-item" data-cat="dalaman" data-lightbox="assets/skylift-hangar.jpg"><img src="assets/skylift-hangar-sm.jpg" width="600" height="800" loading="lazy" alt="Lengan skylift mencapai bahagian tinggi dalam hangar"><span><small>HANGAR &amp; GUDANG</small>Ruang dalaman tinggi</span></button>
+      <button class="g-item" data-cat="struktur" data-lightbox="assets/kerja-26.jpg"><img src="assets/kerja-26-sm.jpg" width="720" height="540" loading="lazy" alt="Skylift SOHHO bekerja di bawah jambatan"><span><small>MENARA, JAMBATAN &amp; TIANG</small>Bawah jambatan</span></button>
+      <button class="g-item" data-cat="struktur" data-lightbox="assets/kerja-27.jpg"><img src="assets/kerja-27-sm.jpg" width="720" height="957" loading="lazy" alt="Lori skylift SOHHO di bawah jambatan konkrit"><span><small>MENARA, JAMBATAN &amp; TIANG</small>Struktur jambatan</span></button>
+      <button class="g-item" data-cat="struktur" data-lightbox="assets/kerja-28.jpg"><img src="assets/kerja-28-sm.jpg" width="720" height="960" loading="lazy" alt="Pekerja di bakul skylift memasang antena"><span><small>MENARA, JAMBATAN &amp; TIANG</small>Kerja telekomunikasi</span></button>
+      <button class="g-item" data-cat="bangunan" data-lightbox="assets/kerja-29.jpg"><img src="assets/kerja-29-sm.jpg" width="720" height="540" loading="lazy" alt="Lori skylift Isuzu SOHHO di rumah dalam pembinaan"><span><small>BANGUNAN</small>Rumah kediaman tiga tingkat</span></button>
+      <button class="g-item" data-cat="bangunan" data-lightbox="assets/kerja-30.jpg"><img src="assets/kerja-30-sm.jpg" width="720" height="960" loading="lazy" alt="Bakul skylift di aras atas rumah kediaman"><span><small>BANGUNAN</small>Kemasan luar rumah</span></button>
     </div>
+    <div class="gallery-more"><button class="btn btn-red" id="moreBtn">LIHAT SEMUA GAMBAR <span class="arrow">↓</span></button></div>
   </div>
 </section>
 
@@ -627,6 +682,7 @@ img{max-width:100%;display:block}
       <a class="btn btn-red" href="https://wa.me/60139981855" data-wa target="_blank" rel="noopener">WHATSAPP 013-998 1855 <span class="arrow">↗</span></a>
       <a class="btn btn-ghost" href="tel:+60139981855">HUBUNGI TERUS <span class="arrow">↗</span></a>
       <a class="btn btn-ghost" href="mailto:jeliramarketing@gmail.com">E-MEL KAMI <span class="arrow">↗</span></a>
+      <a class="btn btn-tt" href="https://www.tiktok.com/@jelirasign" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg> TIKTOK <span class="arrow">↗</span></a>
     </div>
   </div>
   <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none" aria-hidden="true">
@@ -643,7 +699,7 @@ img{max-width:100%;display:block}
   <div class="wrap">
     <div class="footgrid">
       <div><img class="foot-logo" src="assets/logo.png" alt="SOHHO Advertising &amp; Engineering" loading="lazy" width="640" height="498"><p>Sewa skylift 14 hingga 44 meter di Pantai Timur, dengan pengalaman lebih 20 tahun. Kontraktor berdaftar CIDB G3.<br><i>Kerja tinggi, jadi lebih mudah.</i></p></div>
-      <div><h4>Hubungi Kami</h4><p><a href="https://wa.me/60139981855" data-wa target="_blank" rel="noopener">WhatsApp 013-998 1855</a><br>Talian lain: <a href="tel:+60129488155">012-948 8155</a><br><a href="mailto:jeliramarketing@gmail.com">jeliramarketing@gmail.com</a><br><a href="https://www.facebook.com/search/top?q=Jelira%20Sign" target="_blank" rel="noopener">Facebook: Jelira Sign</a></p></div>
+      <div><h4>Hubungi Kami</h4><p><a href="https://wa.me/60139981855" data-wa target="_blank" rel="noopener">WhatsApp 013-998 1855</a><br>Talian lain: <a href="tel:+60129488155">012-948 8155</a><br><a href="mailto:jeliramarketing@gmail.com">jeliramarketing@gmail.com</a><br><a href="https://www.facebook.com/search/top?q=Jelira%20Sign" target="_blank" rel="noopener">Facebook: Jelira Sign</a><br><a href="https://www.tiktok.com/@jelirasign" target="_blank" rel="noopener">TikTok: @jelirasign</a></p></div>
       <div><h4>Alamat</h4><p>Jelira Marketing<br>Lot 1985 A, B &amp; C, Jalan Ketereh–Kok Lanas,<br>Kg. Pangkal Kuang, 16450 Ketereh, Kelantan.</p></div>
     </div>
     <div class="copyright">© <span id="year"></span> SOHHO Advertising &amp; Engineering (Jelira Marketing · CIDB 0120250715-KN157889). Hak cipta terpelihara. Harga tertakluk kepada pemasangan dan kos pengangkutan.</div>
@@ -661,7 +717,10 @@ img{max-width:100%;display:block}
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Paparan gambar">
   <button class="lb-close" id="lbClose" aria-label="Tutup">×</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Gambar sebelum">‹</button>
   <img id="lbImg" src="" alt="">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Gambar seterusnya">›</button>
+  <div class="lb-count" id="lbCount"></div>
 </div>
 
 <script>
@@ -735,15 +794,49 @@ img{max-width:100%;display:block}
   const faqs = [...document.querySelectorAll('.faq-item')];
   faqs.forEach(d => d.addEventListener('toggle', () => { if (d.open) faqs.forEach(o => { if (o !== d) o.open = false; }); }));
 
-  /* ---------- Lightbox ---------- */
-  const lb = $('#lightbox'), lbImg = $('#lbImg');
-  let lastFocus;
+  /* ---------- Gallery: category filter, first 9 photos until "see all" ---------- */
+  const gItems = [...document.querySelectorAll('.g-item')], moreBtn = $('#moreBtn');
+  const LIMIT = matchMedia('(max-width:600px)').matches ? 8 : 9; // fills the grid evenly: 3 columns on desktop, 2 on phones
+  let filter = 'semua', expanded = false;
+  const matches = () => gItems.filter(g => filter === 'semua' || g.dataset.cat === filter);
+  const renderGallery = () => {
+    const m = matches();
+    gItems.forEach(g => g.hidden = true);
+    m.forEach((g, i) => g.hidden = !expanded && i >= LIMIT);
+    moreBtn.parentElement.hidden = expanded || m.length <= LIMIT;
+    moreBtn.firstChild.textContent = `LIHAT SEMUA ${m.length} GAMBAR `;
+  };
+  document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
+    document.querySelectorAll('.chip').forEach(o => { o.classList.toggle('on', o === c); o.setAttribute('aria-pressed', o === c); });
+    filter = c.dataset.filter; expanded = false; renderGallery();
+  }));
+  moreBtn.addEventListener('click', () => { expanded = true; renderGallery(); });
+  renderGallery();
+
+  /* ---------- Lightbox (arrows / swipe step through the filtered gallery) ---------- */
+  const lb = $('#lightbox'), lbImg = $('#lbImg'), lbCount = $('#lbCount'), lbPrev = $('#lbPrev'), lbNext = $('#lbNext');
+  let lastFocus, set = [], idx = 0;
+  const show = i => {
+    idx = (i + set.length) % set.length; const b = set[idx], cap = b.querySelector('span');
+    lbImg.src = b.dataset.lightbox; lbImg.alt = b.querySelector('img').alt;
+    const many = set.length > 1; lbPrev.hidden = lbNext.hidden = lbCount.hidden = !many;
+    lbCount.textContent = many ? `${idx + 1} / ${set.length}` + (cap ? ` · ${cap.lastChild.textContent}` : '') : '';
+  };
   const closeLb = () => { lb.classList.remove('open'); lastFocus && lastFocus.focus(); };
   document.querySelectorAll('[data-lightbox]').forEach(b => b.addEventListener('click', () => {
-    lastFocus = b; lbImg.src = b.dataset.lightbox; lbImg.alt = b.querySelector('img').alt; lb.classList.add('open'); $('#lbClose').focus();
+    lastFocus = b; set = b.classList.contains('g-item') ? matches() : [b]; show(set.indexOf(b));
+    lb.classList.add('open'); $('#lbClose').focus();
   }));
-  lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
-  addEventListener('keydown', e => { if (e.key === 'Escape') { if (lb.classList.contains('open')) closeLb(); else setMenu(false); } });
+  lbPrev.addEventListener('click', e => { e.stopPropagation(); show(idx - 1); });
+  lbNext.addEventListener('click', e => { e.stopPropagation(); show(idx + 1); });
+  lb.addEventListener('click', e => { if (e.target === lb || e.target.id === 'lbClose') closeLb(); });
+  let x0 = null;
+  lb.addEventListener('touchstart', e => x0 = e.touches[0].clientX, { passive: true });
+  lb.addEventListener('touchend', e => { if (x0 === null || set.length < 2) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1)); x0 = null; });
+  addEventListener('keydown', e => {
+    if (lb.classList.contains('open')) { if (e.key === 'Escape') closeLb(); else if (e.key === 'ArrowLeft') show(idx - 1); else if (e.key === 'ArrowRight') show(idx + 1); }
+    else if (e.key === 'Escape') setMenu(false);
+  });
 
   /* ---------- Jingle: the SOHHO chorus plays on the first tap, small button to switch it on/off ---------- */
   // Browsers block sound until the visitor interacts, so the chorus starts on the
