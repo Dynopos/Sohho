@@ -838,10 +838,10 @@ img{max-width:100%;display:block}
     else if (e.key === 'Escape') setMenu(false);
   });
 
-  /* ---------- Jingle: the SOHHO chorus plays on the first tap, small button to switch it on/off ---------- */
+  /* ---------- Jingle: the SOHHO chorus (looped to ~2 minutes) plays on the first tap, small button to switch it on/off ---------- */
   // Browsers block sound until the visitor interacts, so the chorus starts on the
   // first tap / click / key press anywhere on the page (scrolling alone doesn't count).
-  const jingle = new Audio('assets/chorus.mp3'); jingle.preload = 'auto';
+  const jingle = new Audio('assets/chorus.mp3'); jingle.preload = 'metadata'; // ~2 min file streams on play, not on page load
   const soundBtn = $('#soundBtn');
   const setOn = on => {
     soundBtn.classList.toggle('on', on); soundBtn.setAttribute('aria-pressed', on);
