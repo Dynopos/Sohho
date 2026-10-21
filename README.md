@@ -12,7 +12,7 @@ Reka bentuk mengikut gaya laman Naami Stable (loader, hero penuh skrin, marquee,
 ## Kemas kini biasa
 - **Harga**: cari bahagian `id="harga"` dalam `index.html`. Setiap kad ada ketinggian, harga dan teks WhatsApp
   (`data-wa="skylift 15 meter (RM550)"`). Bar ketinggian di kad dikawal oleh `--h` (ketinggian ÷ 44).
-- **WhatsApp**: nombor `60178941093` digunakan dalam `index.html`. Semua butang bertanda `data-wa` membuka WhatsApp
+- **WhatsApp**: nombor `60139981855` digunakan dalam `index.html`. Semua butang bertanda `data-wa` membuka WhatsApp
   dengan mesej pertanyaan yang sudah diisi (lokasi, jenis kerja, ketinggian, tarikh/tempoh).
 - **Gambar baharu**: mampatkan dahulu, contohnya:
 
